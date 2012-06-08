@@ -302,7 +302,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,  "Shift"  }, "s", function () awful.util.spawn("/home/philippm/.screenlayout/notconnectet.sh"  ) end),
 
     -- Prompt
-    awful.key({ modkey },            "r", function () awful.util.spawn("gmrun") end),
+    awful.key({ modkey },            "r", function () awful.util.spawn("gmrun") end)
 --    awful.key({ modkey }, "x",
 --              function ()
 --                  awful.prompt.run({ prompt = "Run Lua code: " },
@@ -310,7 +310,7 @@ globalkeys = awful.util.table.join(
 --                  awful.util.eval, nil,
 --                  awful.util.getdir("cache") .. "/history_eval")
 --              end)
--- )
+)
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
