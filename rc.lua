@@ -1,16 +1,19 @@
+--------------------------------------------------------------------------------
+-- weXt-core's Awesome WM Configuration					      --
+-- Last change: 07.06.2012						      --
+-- Author: Philipp Marmet - weXt-core					      --
+--------------------------------------------------------------------------------
+
 -- Standard awesome library
 require("awful")
 require("awful.autofocus")
 require("awful.rules")
--- Theme handling library
+
 require("beautiful")
--- Notification library
 require("naughty")
 require("calendar2")
--- Shifty - dynamic tagging library
 
---Debugging - marks the beginning of rc .lua
-print("Entered rc.lua " .. os.time())
+-- require("")
 
 -- Script for run once programms
 function run_once(prg,arg_string,pname,screen)
@@ -28,11 +31,14 @@ function run_once(prg,arg_string,pname,screen)
         awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. " " .. arg_string .. ")",screen)
     end
 end
--- End of Script
 
+-- Autostart
 awful.util.spawn_with_shell("xcompmgr -cF &")
+run_once("gnome-sound-applet")
+run_once("nm-applet")
 
--- {{{ Error handling
+
+-- Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
@@ -57,9 +63,11 @@ do
 end
 -- }}}
 
--- {{{ Variable definitions
--- Themes define colours, icons, and wallpapers
-beautiful.init("/home/philippm/.config/awesome/themes/zenburn/theme.lua")
+
+-- Load Theme Zenburn
+theme_path = awful.util.getdir("config") .. "/themes/zenburn/theme.lua"
+beautiful.init(theme_path)
+
 
 -- This is used later as the default terminal and editor to run.
 -- terminal = "xterm"
@@ -113,9 +121,7 @@ floatapps =
 -- Use the screen and tags indices.
 apptags =
 {
---    ["Iceweasel"] = { screen = 1, tag = 3 },
     ["Firefox"] = { screen = 2, tag = 3}, 
---    ["Gajim"] = { screen = 1, tag = 1},
     ["Pidgin"] = { screen = 1, tag = 4},
     ["thunderbird"] = { screen = 1, tag = 5},
     ['banshee'] = { screen = 1, tag = 6},
@@ -133,12 +139,8 @@ for s = 1, screen.count() do
                         tags[s] = awful.tag({ 'Terms', 'Dev', 'WWW', 'IM', 'Mail', 'Sound', 'Misc', 'Space' }, s, layouts[1])
                 end
 end
---tags = {}
---for s = 1, screen.count() do
---    -- Each screen has its own tag table.
---    tags[s] = awful.tag({ 'test', 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
---end
 -- }}}
+
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
