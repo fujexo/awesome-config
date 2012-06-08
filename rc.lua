@@ -104,17 +104,8 @@ layouts =
 
 floatapps =
 {
-    -- by class
---    ["MPlayer"] = true,
---    ["pinentry"] = true,
     ["gimp"] = true,
     ["gmrun"] = true,
-    -- by instance
---    ["mocp"] = true,
-    ["gmrun"] = true,
---        ["soffice.bin"] = true,
---         ["squeezeplay"] = true,
---   ["yakuake"] = true,
 }
 
 -- Applications to be moved to a pre-defined tag by class or instance.
