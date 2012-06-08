@@ -251,6 +251,7 @@ for s = 1, screen.count() do
 end
 -- }}}
 
+
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
@@ -258,6 +259,7 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
+
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
@@ -309,20 +311,19 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
 
-    awful.key({ modkey,           }, "s" ,function () awful.util.spawn("/home/philippm/.screenlayout/docking.sh"  ) end),
-    awful.key({ modkey,  "Shift"  }, "s" ,function () awful.util.spawn("/home/philippm/.screenlayout/notconnectet.sh"  ) end),
+    -- Load xrandr-config
+    awful.key({ modkey,           }, "s", function () awful.util.spawn("/home/philippm/.screenlayout/docking.sh"  ) end),
+    awful.key({ modkey,  "Shift"  }, "s", function () awful.util.spawn("/home/philippm/.screenlayout/notconnectet.sh"  ) end),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () -- mypromptbox[mouse.screen]:run() end),
-							  awful.util.spawn("gmrun")
-					      end),
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
-              end)
+    awful.key({ modkey },            "r", function () awful.util.spawn("gmrun") end),
+--    awful.key({ modkey }, "x",
+--              function ()
+--                  awful.prompt.run({ prompt = "Run Lua code: " },
+--                  mypromptbox[mouse.screen].widget,
+--                  awful.util.eval, nil,
+--                  awful.util.getdir("cache") .. "/history_eval")
+--              end)
 )
 
 clientkeys = awful.util.table.join(
@@ -393,6 +394,7 @@ clientbuttons = awful.util.table.join(
 -- Set keys
 root.keys(globalkeys)
 -- }}}
+
 
 -- {{{ Rules
 awful.rules.rules = {
