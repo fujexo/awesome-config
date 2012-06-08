@@ -151,6 +151,7 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 mytextclock = awful.widget.textclock({ align = "right" })
 calendar2.addCalendarToWidget(mytextclock, "<span color='#FF0000'>%s</span>")
 
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
