@@ -13,7 +13,6 @@ require("beautiful")
 require("naughty")
 require("calendar2")
 
--- require("")
 
 -- Script for run once programms
 function run_once(prg,arg_string,pname,screen)
@@ -125,7 +124,7 @@ tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
                 if s == 1 then
-                        tags[s] = awful.tag({ 'Terms', 'Dev', 'WWW', 'IM', 'Mail', 'Sound', 'Misc', 'Space', 'Conky' }, s, layouts[2])
+                        tags[s] = awful.tag({ 'Terms', 'Dev', 'WWW', 'IM', 'Mail', 'Sound', 'VM', 'Space', 'Conky' }, s, layouts[2])
                 else
                         tags[s] = awful.tag({ 'Terms', 'Dev', 'WWW', 'IM', 'Mail', 'Sound', 'Misc', 'Space' }, s, layouts[1])
                 end
@@ -136,8 +135,6 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
---   { "manual", terminal .. " -e man awesome" },
---   { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "ReLoad", awesome.restart },
    { "LogOut", awesome.quit }
 }
@@ -158,135 +155,6 @@ calendar2.addCalendarToWidget(mytextclock, "<span color='#FF0000'>%s</span>")
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
-
--- {{{ CPU graph widget
--- cpugraphwidget = widget({
---     type = 'graph',
---     name = 'cpugraphwidget',
---     align = 'right'
--- })
--- 
--- cpugraphwidget.height = 0.85
--- cpugraphwidget.width = 45
--- cpugraphwidget.bg = '#33333355'
--- cpugraphwidget.border_color = '#0a0a0a'
--- cpugraphwidget.grow = 'right'
--- 
--- cpugraphwidget:plot_properties_set('cpu', {
---     fg = '#AEC6D8',
---     fg_center = '#285577',
---     fg_end = '#285577',
---     vertical_gradient = false
--- })
--- 
--- wicked.register(cpugraphwidget, wicked.widgets.cpu, '$1', 1, 'cpu')
--- }}}
-
--- {{{ Memory Bar Widget
--- membarwidget = widget({ type = 'progressbar', name = 'membarwidget', align = 'right' })
--- membarwidget.height = 0.85
--- membarwidget.width = 8
--- membarwidget.bg = '#33333355'
--- membarwidget.border_color = '#0a0a0a'
--- membarwidget.vertical = true
--- membarwidget:bar_properties_set('mem',
---                                      { fg = '#AED8C6',
---                                        fg_center = '#287755',
---                                        fg_end = '#287755',
---                                        fg_off = '#222222',
---                                        vertical_gradient = true,
---                                        horizontal_gradient = false,
---                                        ticks_count = 0,
---                                        ticks_gap = 0 })
--- 
--- wicked.register(membarwidget, wicked.widgets.mem, '$1', 1, 'mem')
---- }}}
-
--- {{{ Load Averages Widget
--- loadwidget = widget({
---     type = 'textbox',
---     name = 'loadwidget',
---     align = 'right'
--- })
--- 
--- function widget_loadavg(format)
---     -- Use /proc/loadavg to get the average system load on 1, 5 and 15 minute intervals
---     local f = io.open('/proc/loadavg')
---     local n = f:read()
---     f:close()
--- 
---     local space1 = string.find(n, " ")
---     local space2 = string.find(n, " ", space1 + 1)
---     local space3 = string.find(n, " ", space2 + 1)
--- 
---     local load1 = n:sub(1,space1 - 2)
---     local load5 = n:sub(space1 + 1, space2 - 2)
---     local load15 = n:sub(space2 + 1, space3 - 2)
--- 
---     return {load1, load5, load15}
--- end
--- 
--- wicked.register(loadwidget, widget_loadavg, ' <span color="white">$1</span>/<span color="grey80">$2</span>/<span color="grey60">$3</span> ', 2)
--- }}}
-
--- {{{ Network widget
--- netwidget = widget({
---     type = 'textbox',
---     name = 'netwidget',
---     align = 'right'
--- })
--- 
--- wicked.register(netwidget, wicked.widgets.net,
---     '<span color="green">▾</span>${' .. netif ..
---     ' down} <span color="red">▴</span>${' .. netif .. ' up} ')
--- }}}
-
--- {{{ Battery widget
--- if host == "macbork" then
---     batteries = 1
--- 
---     -- Function to extract charge percentage
---     function read_battery_life(number)
---        return function(format)
---                  local fh = io.popen('acpi')
---                  output = fh:read("*a")
---                  fh:close()
--- 
---                  count = 0
---                  for s in string.gmatch(output, "(%d+)%%") do
---                     if number == count then
---                        return {s}
---                     end
---                     count = count + 1
---                  end
---               end
---     end
--- 
---     -- Display one vertical progressbar per battery
---     for battery=0, batteries-1 do
---        batterygraphwidget = widget({ type = 'progressbar',
---                                      name = 'batterygraphwidget',
---                                      align = 'right' })
---        batterygraphwidget.height = 0.85
---        batterygraphwidget.width = 8
---        batterygraphwidget.bg = '#333333'
---        batterygraphwidget.border_color = '#0a0a0a'
---        batterygraphwidget.vertical = true
---        batterygraphwidget:bar_properties_set('battery',
---                                              { fg = '#AEC6D8',
---                                                fg_center = '#285577',
---                                                fg_end = '#285577',
---                                                fg_off = '#222222',
---                                                vertical_gradient = true,
---                                                horizontal_gradient = false,
---                                                ticks_count = 0,
---                                                ticks_gap = 0 })
--- 
---        wicked.register(batterygraphwidget, read_battery_life(battery), '$1', 1, 'battery')
---     end
--- end
--- }}}
-
 
 
 -- Create a wibox for each screen and add it
@@ -453,7 +321,7 @@ globalkeys = awful.util.table.join(
 --                  awful.util.eval, nil,
 --                  awful.util.getdir("cache") .. "/history_eval")
 --              end)
-)
+-- )
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
@@ -580,12 +448,3 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
--- {{{ 
--- Autostarts
-awful.util.spawn_with_shell("gnome-sound-applet")
-awful.util.spawn_with_shell("notify-send 'Hi Philipp! Wish you a nice day!'")
-run_once("nm-applet")
--- }}}
-
-
