@@ -1,0 +1,24 @@
+README of core-power
+=================
+
+* Philipp Marmet, mail@nytoca.ch, 2012
+
+
+About
+-----
+
+This is a config for the Window-manager Awesome
+
+Issues
+------
+
+[core-power issues on GitHub]
+
+Usage
+-----
+
+clone this git-repo
+copy the folder into /home/*username*/.config/
+
+
+[core-power issues on GitHub]: http://github.com/Nytoca/core-power/issues
