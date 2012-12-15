@@ -21,4 +21,4 @@ clone this git-repo
 copy the folder into /home/*username*/.config/
 
 
-[awesome-config issues on GitHub]: http://github.com/Nytoca/cawesome-config/issues
+[awesome-config issues on GitHub]: http://github.com/Nytoca/awesome-config/issues
